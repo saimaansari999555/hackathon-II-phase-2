@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b \"C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\Hackathon-II-Phase-02-Todo-Full-Stack-Web-Application\\\\frontend\\\\types\")",
+      "Bash(dir /s /b \"C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\Hackathon-II-Phase-02-Todo-Full-Stack-Web-Application\\\\frontend\\\\app\\\\\\(auth\\)\")",
+      "Bash(dir /s /b \"C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\Hackathon-II-Phase-02-Todo-Full-Stack-Web-Application\\\\frontend\\\\components\\\\auth\")",
+      "Bash(dir /s /b \"C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\Hackathon-II-Phase-02-Todo-Full-Stack-Web-Application\\\\frontend\\\\components\\\\layout\")"
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FORCED DARK THEME - CYBER INDIGO AESTHETIC */
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 2, 6, 23;
+  /* #020617 */
+  --accent-color: 139, 92, 246;
+  /* Violet-500 */
+  --card-bg: rgba(15, 23, 42, 0.9);
+  /* #0f172a */
+  --glass-border: rgba(139, 92, 246, 0.2);
+}
+
+@layer base {
+  body {
+    color: rgb(var(--foreground-rgb));
+    background-color: #020617;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 40%),
+      linear-gradient(to bottom, #020617, #0f172a);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: #020617;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[#0f172a]/95 backdrop-blur-2xl border border-violet-500/20 shadow-xl rounded-2xl overflow-hidden transition-all duration-300;
+  }
+
+  .premium-button {
+    @apply px-10 py-4 rounded-full font-black transition-all duration-500 transform hover:scale-[1.05] active:scale-95 shadow-mist hover:shadow-mist-premium uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 bg-primary-600 text-white hover:bg-primary-500;
+  }
+
+  .premium-input {
+    @apply bg-surface-dark/50 border border-primary-900/40 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500 transition-all duration-300 outline-none font-medium placeholder:text-slate-600 text-primary-50 w-full;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-100 font-black tracking-tighter italic;
+  }
+
+  .premium-link {
+    @apply text-primary-400 hover:text-primary-300 transition-colors duration-300 underline underline-offset-4 decoration-primary-500/30 font-bold;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050a09;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.4);
+}
+
+::selection {
+  @apply bg-primary-500/40 text-white;
+}
+
+/* Motion Utilities */
+.animate-mist {
+  animation: mist-flow 10s ease-in-out infinite alternate;
+}
+
+@keyframes mist-flow {
+  0% {
+    opacity: 0.3;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0.6;
+    transform: translateY(-10px) scale(1.05);
+  }
+}
