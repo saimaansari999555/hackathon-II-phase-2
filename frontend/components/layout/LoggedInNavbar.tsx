@@ -38,29 +38,29 @@ const LoggedInNavbar = () => {
   if (isLoading) return null;
 
   const navItems = [
-    { href: "/dashboard", label: "NODE", icon: LayoutDashboard },
-    { href: "/tasks", label: "LOGS", icon: CheckSquare },
-    { href: "/calendar", label: "TIMELINE", icon: Calendar },
-    { href: "/chat", label: "AI ASSISTANT", icon: MessageSquare },
+    { href: "/dashboard", label: "DASHBOARD", icon: LayoutDashboard },
+    { href: "/tasks", label: "TASKS", icon: CheckSquare },
+    { href: "/calendar", label: "CALENDAR", icon: Calendar },
+    { href: "/chat", label: "AI CHAT", icon: MessageSquare },
   ];
 
   return (
-    <header className="relative md:sticky md:top-0 z-40 w-full border-b backdrop-blur-xl border-violet-500/10 bg-[#020617]/90 transition-all duration-300">
+    <header className="relative md:sticky md:top-0 z-40 w-full border-b backdrop-blur-xl border-slate-200 bg-white/90 transition-all duration-300">
       <div className="max-w-7xl mx-auto flex h-20 items-center justify-between px-6">
         <div className="flex items-center gap-8">
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 rounded-full text-primary-500 hover:bg-primary-500/10"
+            className="md:hidden p-2 rounded-full text-indigo-600 hover:bg-indigo-50"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
           <Link href="/tasks" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center font-black text-white shadow-mist group-hover:shadow-mist-premium transition-all">
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg transition-all">
               T
             </div>
-            <span className="hidden sm:inline-block text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-100 italic tracking-tighter">
+            <span className="hidden sm:inline-block text-xl font-bold text-slate-900 tracking-tight">
               TodoMaster
             </span>
           </Link>
@@ -72,9 +72,9 @@ const LoggedInNavbar = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center px-5 py-2.5 rounded-full transition-all duration-500 ${isActive
-                    ? "bg-primary-500/10 text-primary-400 border border-primary-500/20"
-                    : "text-primary-50/30 hover:text-primary-400 hover:bg-primary-500/5"
+                  className={`flex items-center px-4 py-2 rounded-xl transition-all duration-300 ${isActive
+                    ? "bg-indigo-50 text-indigo-600 font-bold"
+                    : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                 >
                   <item.icon className="w-4 h-4 mr-3" />
@@ -102,28 +102,28 @@ const LoggedInNavbar = () => {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute right-0 mt-6 w-72 origin-top-right rounded-2xl bg-surface-dark border border-primary-500/10 shadow-mist-premium animate-in fade-in slide-in-from-top-4 duration-500 z-50">
+              <div className="absolute right-0 mt-4 w-64 origin-top-right rounded-2xl bg-white border border-slate-100 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300 z-50">
                 <div className="p-4">
-                  <div className="p-4 rounded-xl bg-primary-500/5 mb-4 border border-primary-500/10">
-                    <p className="font-black text-white italic tracking-tight truncate">{user?.name}</p>
-                    <p className="text-[10px] text-primary-50/30 truncate uppercase tracking-widest font-black mt-1">
+                  <div className="p-4 rounded-xl bg-slate-50 mb-2 border border-slate-100">
+                    <p className="font-bold text-slate-900 truncate">{user?.name}</p>
+                    <p className="text-[11px] text-slate-400 truncate font-medium">
                       {user?.email}
                     </p>
                   </div>
 
-                  <Link href="/profile" className="flex items-center px-4 py-4 text-[10px] font-black uppercase tracking-[0.15em] text-primary-50/40 hover:text-primary-400 hover:bg-primary-500/5 rounded-xl transition-all italic">
-                    <User className="w-4 h-4 mr-4" />
-                    Security Protocol
+                  <Link href="/profile" className="flex items-center px-4 py-3 text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all">
+                    <User className="w-4 h-4 mr-3" />
+                    My Profile
                   </Link>
 
-                  <div className="h-px bg-primary-500/10 my-4"></div>
+                  <div className="h-px bg-slate-100 my-2"></div>
 
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center px-4 py-4 text-[10px] font-black uppercase tracking-[0.15em] text-red-500/40 hover:text-red-500 hover:bg-red-500/5 rounded-xl transition-all italic"
+                    className="w-full flex items-center px-4 py-3 text-sm font-medium text-rose-500 hover:bg-rose-50 rounded-xl transition-all"
                   >
-                    <LogOut className="w-4 h-4 mr-4" />
-                    Terminate Session
+                    <LogOut className="w-4 h-4 mr-3" />
+                    Sign Out
                   </button>
                 </div>
               </div>
@@ -133,30 +133,30 @@ const LoggedInNavbar = () => {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-surface-dark/95 backdrop-blur-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-500 border-t border-primary-500/10">
-          <nav className="p-8 space-y-6">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-white backdrop-blur-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-300 border-t border-slate-100 shadow-xl">
+          <nav className="p-6 space-y-2">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center p-6 rounded-2xl font-black uppercase tracking-[0.2em] italic ${isActive
-                    ? "bg-primary-500/10 text-primary-400 border border-primary-500/20"
-                    : "text-primary-50/30"
+                  className={`flex items-center p-4 rounded-xl font-bold text-sm tracking-tight ${isActive
+                    ? "bg-indigo-50 text-indigo-600"
+                    : "text-slate-500"
                     }`}
                 >
-                  <item.icon className="w-6 h-6 mr-6" />
+                  <item.icon className="w-5 h-5 mr-4" />
                   {item.label}
                 </Link>
               );
             })}
             <button
               onClick={handleLogout}
-              className="w-full flex items-center p-6 rounded-2xl font-black uppercase tracking-[0.2em] italic text-red-500/60"
+              className="w-full flex items-center p-4 rounded-xl font-bold text-sm tracking-tight text-rose-500"
             >
-              <LogOut className="w-6 h-6 mr-6" />
-              Terminate
+              <LogOut className="w-5 h-5 mr-4" />
+              Sign Out
             </button>
           </nav>
         </div>

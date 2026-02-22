@@ -68,53 +68,53 @@ export function TaskForm({ task, onSubmit, onCancel, isLoading }: TaskFormProps)
     <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6" noValidate>
       {submitError && (
         <div
-          className="p-4 text-xs font-black uppercase tracking-widest border border-red-500/20 bg-red-500/5 text-red-500 rounded-xl animate-pulse italic"
+          className="p-4 text-sm font-semibold border border-rose-100 bg-rose-50 text-rose-600 rounded-2xl"
           role="alert"
         >
-          !! Error: {submitError}
+          Error: {submitError}
         </div>
       )}
 
-      <div className="space-y-1.5">
-        <Label htmlFor="title" className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-50/30 ml-1 italic">Task Title *</Label>
+      <div className="space-y-2">
+        <Label htmlFor="title" className="text-sm font-semibold text-slate-700 ml-1">Task Title *</Label>
         <Input
           id="title"
           type="text"
           placeholder="e.g. Design System Overhaul"
-          className="premium-input w-full"
+          className="w-full"
           disabled={isLoading}
           {...register("title")}
           aria-invalid={errors.title ? "true" : "false"}
         />
         {errors.title && (
-          <p className="text-[10px] text-red-500 font-bold ml-1 italic uppercase tracking-wider" role="alert">
+          <p className="text-xs text-rose-500 font-medium ml-1" role="alert">
             {errors.title.message}
           </p>
         )}
       </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="description" className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-50/30 ml-1 italic">Notes & Context</Label>
+      <div className="space-y-2">
+        <Label htmlFor="description" className="text-sm font-semibold text-slate-700 ml-1">Notes & Context</Label>
         <textarea
           id="description"
-          className="premium-input w-full min-h-[120px] resize-none !bg-surface-dark/40"
+          className="flex w-full rounded-2xl border border-slate-200 bg-slate-50/50 px-6 py-4 text-sm text-slate-900 transition-all duration-300 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:bg-white min-h-[120px] resize-none"
           placeholder="What are the key details for this task?"
           disabled={isLoading}
           {...register("description")}
         />
         {errors.description && (
-          <p className="text-[10px] text-red-500 font-bold ml-1 italic uppercase tracking-wider" role="alert">
+          <p className="text-xs text-rose-500 font-medium ml-1" role="alert">
             {errors.description.message}
           </p>
         )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="space-y-1.5">
-          <Label htmlFor="priority" className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-50/30 ml-1 italic">Priority Level</Label>
+        <div className="space-y-2">
+          <Label htmlFor="priority" className="text-sm font-semibold text-slate-700 ml-1">Priority Level</Label>
           <Select
             id="priority"
-            className="premium-input w-full appearance-none"
+            className="w-full"
             options={[
               { value: "low", label: "Low Priority" },
               { value: "medium", label: "Medium Priority" },
@@ -125,11 +125,11 @@ export function TaskForm({ task, onSubmit, onCancel, isLoading }: TaskFormProps)
           />
         </div>
 
-        <div className="space-y-1.5">
-          <Label htmlFor="categoryId" className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-50/30 ml-1 italic">Category</Label>
+        <div className="space-y-2">
+          <Label htmlFor="categoryId" className="text-sm font-semibold text-slate-700 ml-1">Category</Label>
           <Select
             id="categoryId"
-            className="premium-input w-full appearance-none"
+            className="w-full"
             options={[
               { value: "", label: "No Category" },
               ...categories.map(c => ({ value: c.id, label: c.name }))
@@ -139,42 +139,42 @@ export function TaskForm({ task, onSubmit, onCancel, isLoading }: TaskFormProps)
           />
         </div>
 
-        <div className="space-y-1.5 sm:col-span-2">
-          <Label htmlFor="dueDate" className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-50/30 ml-1 italic">Target Date</Label>
+        <div className="space-y-2 sm:col-span-2">
+          <Label htmlFor="dueDate" className="text-sm font-semibold text-slate-700 ml-1">Target Date</Label>
           <Input
             id="dueDate"
             type="date"
-            className="premium-input w-full [color-scheme:dark]"
+            className="w-full [color-scheme:light]"
             disabled={isLoading}
             {...register("dueDate")}
           />
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 pt-6 border-t border-primary-500/10">
+      <div className="flex justify-end gap-3 pt-6 border-t border-slate-100">
         {onCancel && (
           <Button
             type="button"
             variant="ghost"
             onClick={onCancel}
-            className="hover:bg-primary-500/10 rounded-xl text-primary-400 font-black uppercase tracking-widest text-[10px] italic"
+            className="rounded-2xl font-bold px-8"
             disabled={isLoading}
           >
-            Abort
+            Cancel
           </Button>
         )}
-        <Button type="submit" className="premium-button bg-primary-600 text-white hover:bg-primary-500 px-12 italic" disabled={isLoading}>
+        <Button type="submit" className="rounded-2xl px-12 font-bold" disabled={isLoading}>
           {isLoading
             ? (
               <div className="flex items-center space-x-2">
-                <span className="w-1 h-1 bg-white rounded-full animate-bounce"></span>
-                <span className="w-1 h-1 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                <span className="w-1 h-1 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce"></span>
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></span>
               </div>
             )
             : task
-              ? "Sync Changes"
-              : "Launch Task"}
+              ? "Update Task"
+              : "Create Task"}
         </Button>
       </div>
     </form>

@@ -24,25 +24,30 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Mobile Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-40 lg:hidden"
           onClick={onClose}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-screen w-72 bg-surface-dark border-r border-primary-500/10 transition-transform duration-500 z-50 lg:relative lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed left-0 top-0 h-screen w-72 bg-white border-r border-slate-100 transition-transform duration-300 z-50 lg:relative lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
       >
-        <div className="flex items-center justify-between h-20 px-6 border-b border-primary-500/10">
-          <h1 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-100 italic tracking-tighter">
-            TodoMaster
-          </h1>
+        <div className="flex items-center justify-between h-20 px-8 border-b border-slate-100">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white">
+              T
+            </div>
+            <span className="text-lg font-bold text-slate-900 tracking-tight">
+              TodoMaster
+            </span>
+          </div>
           <button
             onClick={onClose}
-            className="lg:hidden p-2 hover:bg-primary-500/10 rounded-full transition-colors"
+            className="lg:hidden p-2 hover:bg-slate-50 rounded-xl transition-colors"
           >
-            <X className="w-6 h-6 text-primary-500" />
+            <X className="w-6 h-6 text-slate-400" />
           </button>
         </div>
 
@@ -54,13 +59,13 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 key={item.href}
                 href={item.href}
                 onClick={onClose}
-                className={`flex items-center space-x-4 px-6 py-4 rounded-full transition-all duration-500 font-bold uppercase tracking-widest text-[10px] italic ${isActive
-                    ? "bg-primary-500 text-white shadow-mist-premium"
-                    : "text-primary-50/40 hover:text-primary-400 hover:bg-primary-500/5"
+                className={`flex items-center space-x-4 px-6 py-3.5 rounded-2xl transition-all duration-300 font-bold text-xs tracking-tight ${isActive
+                  ? "bg-indigo-50 text-indigo-600"
+                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                   }`}
               >
                 <span className="text-lg">{item.icon}</span>
-                <span>{item.label}</span>
+                <span>{item.label.toUpperCase()}</span>
               </Link>
             );
           })}
